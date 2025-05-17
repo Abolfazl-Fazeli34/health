@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل شما</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #121212; /* تم دارک */
+            color: #f1f1f1;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f1f1f1;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: red;
+        }
+
+        .nav-link.active {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .btn-danger:hover {
+            background-color: #d40015;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a class="navbar-brand" href="#">تناسب اندام</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#profile">پروفایل</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">ویژگی‌ها</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#bmi">محاسبه BMI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#plans">برنامه‌ها</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">خروج</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <h2>پروفایل شما</h2>
+
+        <h3 class="mt-4">تاریخچه BMI شما</h3>
+        <table class="table mt-3 table-dark">
+            <thead>
+                <tr>
+                    <th>BMI</th>
+                    <th>قد (سانتی‌متر)</th>
+                    <th>وزن (کیلوگرم)</th>
+                    <th>تاریخ</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bmi in bmi_history %}
+                <tr>
+                    <td>{{ bmi.bmi }}</td>
+                    <td>{{ bmi.height }}</td>
+                    <td>{{ bmi.weight }}</td>
+                    <td>{{ bmi.date_created }}</td>
+                    <td>
+                        <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal{{ bmi.id }}">حذف</a>
+                    </td>
+                </tr>
+
+                <!-- Modal تایید حذف برای هر BMI -->
+                <div class="modal" tabindex="-1" id="confirmDeleteModal{{ bmi.id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">حذف BMI</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>آیا مطمئن هستید که می‌خواهید این BMI را حذف کنید؟</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                                <a href="{% url 'delete_bmi' bmi.id %}" class="btn btn-danger">حذف</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3 class="mt-5">برنامه‌های مشاور</h3>
+        <ul class="list-group">
+            {% for program in health_programs %}
+            <li class="list-group-item">
+                <p>{{ program.program_text }}</p>
+                <p><small>ارسال‌شده توسط: {{ program.consultant.name }}</small></p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

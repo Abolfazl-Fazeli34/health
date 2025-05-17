@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ارسال برنامه</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">ارسال برنامه به {{ student.username }}</h2>
+    <div class="mt-4">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="program_text" class="form-label">متن برنامه</label>
+          <textarea id="program_text" name="program_text" class="form-control" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">ارسال برنامه</button>
+        <a href="{% url 'consultant_dashboard' %}" class="btn btn-secondary">بازگشت به داشبورد</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
