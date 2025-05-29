@@ -1,7 +1,4 @@
-
 ---
-
-
 
 ![image](appone/static/screencapture-127-0-0-1-8000-2025-05-29-14_18_43.png)
 
@@ -9,32 +6,36 @@
 
 # 🏥 Health & Consultant Management System
 
-یک سیستم حرفه‌ای برای مدیریت کاربران، محاسبه شاخص توده بدنی (BMI)، برنامه‌های سلامت، و داشبورد اختصاصی برای مشاورها!  
+A professional system for user management, BMI (Body Mass Index) calculation, health program management, and a dedicated consultant dashboard!
 
 ---
 
-## 🚀 ویژگی‌ها
-✅ ثبت‌نام و ورود کاربران  
-✅ امکان ورود مشاورها با کد اختصاصی  
-✅ محاسبه BMI و ذخیره تاریخچه  
-✅ مشاهده پروفایل کاربری شامل تاریخچه BMI و برنامه‌های سلامتی  
-✅ داشبورد مشاور برای مدیریت دانش‌آموزان و ارسال برنامه  
-✅ قابلیت حذف رکوردهای BMI  
-✅ احراز هویت کاربران و مشاورها  
-✅ سیستم خروج امن  
+## 🚀 Features
+- ✅ User registration and login  
+- ✅ Consultant login with a unique code  
+- ✅ BMI calculation with history tracking  
+- ✅ User profile with BMI history and assigned health programs  
+- ✅ Consultant dashboard for managing students and assigning health programs  
+- ✅ Ability to delete BMI records  
+- ✅ Secure user and consultant authentication  
+- ✅ Safe logout system  
 
 ---
 
-## 💻 تکنولوژی‌ها
+## 💻 Technologies
 - **Django** (Web Framework)  
-- **SQLite/PostgreSQL** (پایگاه‌داده)  
-- **Bootstrap (اختیاری)** برای طراحی رابط کاربری  
+- **SQLite/PostgreSQL** (Database)  
+- **Bootstrap** (optional, for UI styling)  
 - **Python**  
 
 ---
 
-## 📝 نحوه اجرا
-1️⃣ کلون کردن پروژه:
-```bash
-git clone https://github.com/your-username/health-consultant-app.git
-cd health-consultant-app
+[//]: # (## 📝 How to Run)
+
+[//]: # (1️⃣ Clone the project:)
+
+[//]: # (```bash)
+
+[//]: # (git clone https://github.com/your-username/health-consultant-app.git)
+
+[//]: # (cd health-consultant-app)
